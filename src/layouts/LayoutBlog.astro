@@ -1,0 +1,38 @@
+---
+import ButtonScrollToTop from "@/components/ButtonScrollToTop.astro";
+import { Image } from "astro:assets";
+import Layout from "./Layout.astro";
+const { frontmatter, listingUrl } = Astro.props;
+---
+
+<Layout pageTitle={frontmatter.title}>
+    <div class="">
+        <div class="my-4">
+            <article
+                class="mx-auto max-w-3xl px-4 pb-8 prose prose-slate md:prose-lg prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl prose-blockquote:border-s-slate-400"
+            >
+                {
+                    frontmatter.cover && (
+                        <Image
+                            src={frontmatter.cover}
+                            alt={frontmatter.coverAlt ?? "Cover image"}
+                            class="my-2"
+                        />
+                    )
+                }
+                <h1 class:list={[
+                    {
+                        "mt-4": frontmatter.cover
+                    },
+                    "mb-0"
+                ]}>{frontmatter.title}</h1>
+                <p></p>
+                <slot />
+            </article>
+            <div class="text-center mb-32">
+                <a href={listingUrl ?? "/blog"} class="px-4 py-2 border rounded-full border-slate-950 shadow-xl">Back to listing</a>
+                <ButtonScrollToTop />
+            </div>
+        </div>
+    </div>
+</Layout>

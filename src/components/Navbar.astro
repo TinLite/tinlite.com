@@ -1,0 +1,85 @@
+---
+import DiscordIcon from "./lucide-icons/DiscordIcon.astro";
+import FacebookIcon from "./lucide-icons/FacebookIcon.astro";
+import GithubIcon from "./lucide-icons/GithubIcon.astro";
+import MailIcon from "./lucide-icons/MailIcon.astro";
+import MenuIcon from "./lucide-icons/MenuIcon.astro";
+import XIcon from "./lucide-icons/XIcon.astro";
+
+
+const links = [
+    {
+        title: "Blogs",
+        url: "/blog",
+    },
+    {
+        title: "Projects",
+        url: "/project",
+    },
+    {
+        title: "About",
+        url: "/about",
+    },
+];
+---
+
+<div class="border-b bg-slate-50 shadow sticky md:static top-0">
+    <div class="w-screen md:container mx-auto flex justify-between">
+        <a href="/" class="px-4 py-2">Vinh | Under heavy construction</a>
+        <div class="md:block hidden">
+            {
+                links.map((v) => (
+                    <a href={v.url} class="px-4 py-2 inline-block">
+                        {v.title}
+                    </a>
+                ))
+            }
+        </div>
+        <button class="block md:hidden px-4 py-2" onclick="openNav()">
+            <MenuIcon />
+        </button>
+    </div>
+</div>
+<div class="block md:hidden fixed transition-all top-0 opacity-0 pointer-events-none w-screen h-screen backdrop-blur-md bg-slate-300 bg-opacity-50 text-right" id="nav-mobile"
+style="transition-property: right, opacity;"
+>
+    <h1 class="px-8 py-8 text-4xl">Vinh</h1>
+    <button class="absolute top-0 right-0 px-4 py-2" onclick="closeNav()"><XIcon /></button>
+    <div class="">
+        <a href="/" class="block px-8 py-1">Home</a>
+        {links.map(v => <a href={v.url} class="block px-8 py-1 first:border-t">{v.title}</a>)}
+    </div>
+    <div class="block mx-6 my-4">
+        <a href="mailto:hello@tinlite.com" class="p-2 inline-block">
+            <MailIcon width="20" height="20" />
+        </a>
+        <a href="https://www.facebook.com/quang.vinh.vo.566854/" class="p-2 inline-block">
+            <GithubIcon width="20" height="20" />
+        </a>
+        <a href="https://github.com/TinLite/" class="p-2 inline-block">
+            <FacebookIcon width="20" height="20" />
+        </a>
+        <a href="http://discord.com/users/284651448120115201" class="p-2 inline-block">
+            <DiscordIcon width="20" height="20" />
+        </a>
+    </div>
+</div>
+<script is:inline>
+    const navMobile = document.getElementById("nav-mobile")
+    function openNav() {
+        // navMobile.style.right = "0%"
+        // navMobile.style.opacity = "100%"
+        navMobile.classList.toggle("opacity-100")
+        navMobile.classList.toggle("pointer-events-none")
+
+
+    }
+
+    function closeNav() {
+        // navMobile.style.right = "-100%"
+        // navMobile.style.opacity = "0%"
+        navMobile.classList.toggle("opacity-100")
+        navMobile.classList.toggle("pointer-events-none")
+        
+    }
+</script>

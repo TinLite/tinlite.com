@@ -1,0 +1,43 @@
+---
+import DiscordIcon from "./lucide-icons/DiscordIcon.astro";
+import FacebookIcon from "./lucide-icons/FacebookIcon.astro";
+import GithubIcon from "./lucide-icons/GithubIcon.astro";
+import MailIcon from "./lucide-icons/MailIcon.astro";
+---
+
+<div class="border-t bg-slate-50">
+    <div class="w-screen md:container mx-auto flex justify-between items-center pl-4 pr-2 py-2 md:py-0">
+        <p class="block">
+            Licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank"
+                rel="license noopener noreferrer"
+                class="inline-block underline"
+                >CC BY 4.0<img
+                    style="height:18px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+                    alt=""
+                    class="inline-block"
+                /><img
+                    style="height:18px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+                    alt=""
+                    class="inline-block"
+                /></a>
+        </p>
+        <div class="md:block hidden">
+            <a href="mailto:hello@tinlite.com" class="p-2 inline-block" aria-label="mail">
+                <MailIcon width="20" height="20" />
+            </a>
+            <a href="https://www.facebook.com/quang.vinh.vo.566854/" class="p-2 inline-block">
+                <GithubIcon width="20" height="20" />
+            </a>
+            <a href="https://github.com/TinLite/" class="p-2 inline-block">
+                <FacebookIcon width="20" height="20" />
+            </a>
+            <a href="http://discord.com/users/284651448120115201" class="p-2 inline-block">
+                <DiscordIcon width="20" height="20" />
+            </a>
+        </div>
+    </div>
+</div>

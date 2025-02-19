@@ -1,0 +1,31 @@
+---
+import Footer from "@/components/Footer.astro";
+import Navbar from "@/components/Navbar.astro";
+import "@/globals.css";
+const {pageTitle} = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{pageTitle ? `${pageTitle} - TinLite` : "TinLite"}</title>
+	</head>
+	<body class="flex flex-col min-h-screen bg-slate-200 text-slate-950 scroll-smooth">
+		<div class="flex-grow flex flex-col">
+			<Navbar />
+			<slot />
+		</div>
+		<Footer />
+		<script>
+			import { createIcons, Menu } from "lucide";
+			createIcons({
+				icons: {
+					Menu,
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+const pageTitle = "Projects"
+const projectList =
+    (await getCollection("project"))
+    .filter((v) => !(v.data.draft))
+    .sort((a, b) => Date.parse(b.data.projectDate) - Date.parse(a.data.projectDate));
+---
+
+<Layout pageTitle={pageTitle}>
+    <div class="bg-grid w-screen">
+        <div class="pt-8 pb-20 px-8 md:px-0 md:text-center">
+            <h1 class="text-4xl font-extrabold">Projects</h1>
+            <p>What I've worked on</p>
+        </div>
+        <div class="h-8 bg-gradient-to-t from-inherit"></div>
+    </div>
+    <div class="mx-auto max-w-2xl w-screen flex flex-col -mt-16 gap-4 pb-20">
+        {
+            projectList.map((project) => (
+                <a
+                    href={`/project/${project.id}`}
+                    class="bg-slate-50 shadow-xl border-slate-300 border py-2 mx-4 md:mx-0"
+                >
+                    <p class="font-mono uppercase text-sm px-4 opacity-75">
+                        {project.data.projectSpan}
+                    </p>
+                    {project.data.cover && (
+                        <Image
+                            src={project.data.cover}
+                            alt={project.data.coverAlt ?? "Cover image"}
+                            class="my-2"
+                        />
+                    )}
+                    <div class="px-4">
+                        <h2 class="text-xl font-bold">
+                            {project.data.title}
+                        </h2>
+                        <p>Team size: {project.data.teamsize ?? "Not specified"}</p>
+                        <p>{project.data.description ?? ""}</p>
+                        <p>Employer: {project.data.employer ?? "Not specified"}</p>
+                        <p>Technologies used: {project.data.technologies?.join(", ") ?? "Not specified"}</p>
+                    </div>
+                </a>
+            ))
+        }
+        <p class="text-center font-mono uppercase">More will be updated soon!</p>
+    </div>
+</Layout>
